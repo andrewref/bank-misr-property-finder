@@ -1,0 +1,32 @@
+<div *ngIf="loading" class="text-center my-4 shadow-lg bg-body-tertiary rounded">
+  <div class="spinner-border text-primary" role="status"></div>
+  <p class="mt-2">Loading properties...</p>
+</div>
+
+<div *ngIf="error" class="alert alert-danger text-center">{{ error }}</div>
+
+<div class="row g-4">
+  <div *ngFor="let property of property" class="col-md-6 col-lg-4">
+    <div class="card h-100 shadow-sm border-0">
+      <div class="card-body text-center">
+        <h5 class="card-title fw-bold p-3 text-primary-emphasis bg-primary-subtle border border-primary-subtle rounded-3">{{ property.title }}</h5>
+        <img [src]="property.image" class="card-img-top" alt="{{ property.title }}" style="height: 200px; object-fit: cover;">
+        <p class="card-text mb-1">
+          <i class="bi bi-geo-alt-fill text-danger"></i>
+          <strong>Location:</strong> {{ property.location }}
+        </p>
+        <p class="card-text mb-1">
+          <i class="bi bi-cash-stack text-success"></i>
+          <strong>Price:</strong> EGP {{ property.price | number }}
+        </p>
+        <p class="card-text">
+          <i class="bi bi-building"></i>
+          <strong>Type:</strong> {{ property.type }}
+        </p>
+      </div>
+      <div class="card-footer bg-light text-center">
+        <button class="btn btn-sm btn-outline-primary">View Details</button>
+      </div>
+    </div>
+  </div>
+</div>
