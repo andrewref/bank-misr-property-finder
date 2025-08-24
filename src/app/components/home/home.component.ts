@@ -36,17 +36,17 @@ import { RouterModule } from '@angular/router';
       <div class="container mx-auto px-4 py-16">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div class="bg-white rounded-lg shadow-md p-6 text-center">
-            <div class="text-4xl mb-4">🏠</div>
+            <div class="text-6xl mb-4">🏠</div>
             <h3 class="text-xl font-semibold text-gray-900 mb-2">Wide Selection</h3>
             <p class="text-gray-600">Browse through thousands of properties from apartments to luxury homes.</p>
           </div>
           <div class="bg-white rounded-lg shadow-md p-6 text-center">
-            <div class="text-4xl mb-4">🔍</div>
+            <div class="text-6xl mb-4">🔍</div>
             <h3 class="text-xl font-semibold text-gray-900 mb-2">Smart Search</h3>
             <p class="text-gray-600">Use our advanced filters to find exactly what you're looking for.</p>
           </div>
           <div class="bg-white rounded-lg shadow-md p-6 text-center">
-            <div class="text-4xl mb-4">📱</div>
+            <div class="text-6xl mb-4">📱</div>
             <h3 class="text-xl font-semibold text-gray-900 mb-2">Mobile Friendly</h3>
             <p class="text-gray-600">Search and browse properties on any device, anywhere, anytime.</p>
           </div>

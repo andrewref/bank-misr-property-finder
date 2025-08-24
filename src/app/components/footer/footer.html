@@ -1,1 +1,98 @@
-<p>footer works!</p>
+<footer class="bg-gray-900 text-white py-12 mt-auto">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Company Info -->
+      <div class="lg:col-span-1">
+        <h5 class="flex items-center text-xl font-bold mb-4">
+          <i class="fas fa-home mr-2"></i>
+          Property Finder
+        </h5>
+        <p class="text-gray-400 mb-4">
+          Your trusted partner in finding the perfect property. We help you discover, explore, and secure your dream home with our comprehensive property search platform.
+        </p>
+        <div class="flex space-x-3">
+          <a 
+            *ngFor="let social of socialLinks" 
+            [href]="social.url" 
+            class="text-gray-400 hover:text-white transition-colors duration-200"
+            [title]="social.name"
+            target="_blank"
+            rel="noopener noreferrer">
+            <i [class]="social.icon"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h6 class="text-lg font-semibold mb-4">Quick Links</h6>
+        <ul class="space-y-2">
+          <li *ngFor="let link of quickLinks">
+            <a [routerLink]="link.route" class="text-gray-400 hover:text-white transition-colors duration-200">
+              {{ link.name }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Services -->
+      <div>
+        <h6 class="text-lg font-semibold mb-4">Our Services</h6>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-center">
+            <i class="fas fa-check mr-2 text-primary-500"></i>
+            Property Search
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check mr-2 text-primary-500"></i>
+            Advanced Filtering
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check mr-2 text-primary-500"></i>
+            Property Details
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-check mr-2 text-primary-500"></i>
+            Location-based Search
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h6 class="text-lg font-semibold mb-4">Contact Info</h6>
+        <div class="space-y-2 text-gray-400">
+          <p class="flex items-center">
+            <i class="fas fa-map-marker-alt mr-2"></i>
+            123 Property Street, City Center
+          </p>
+          <p class="flex items-center">
+            <i class="fas fa-phone mr-2"></i>
+            +1 (555) 123-4567
+          </p>
+          <p class="flex items-center">
+            <i class="fas fa-envelope mr-2"></i>
+            info@propertyfinder.com
+          </p>
+          <p class="flex items-center">
+            <i class="fas fa-clock mr-2"></i>
+            Mon - Fri: 9AM - 6PM
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <hr class="my-8 border-gray-700">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-400 mb-4 md:mb-0">
+        &copy; {{ currentYear }} Property Finder. All rights reserved.
+      </p>
+      <div class="flex space-x-4 text-sm text-gray-400">
+        <a href="#" class="hover:text-white transition-colors duration-200">Privacy Policy</a>
+        <a href="#" class="hover:text-white transition-colors duration-200">Terms of Service</a>
+        <a href="#" class="hover:text-white transition-colors duration-200">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>

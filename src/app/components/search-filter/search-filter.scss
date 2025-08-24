@@ -1,0 +1,187 @@
+.search-filter-container {
+  .card {
+    border-radius: 15px;
+    transition: all 0.3s ease;
+  }
+
+  .card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
+  }
+
+  .form-control, .form-select {
+    border-radius: 8px;
+    border: 1px solid #e0e6ed;
+    transition: all 0.3s ease;
+    
+    &:focus {
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 0.2rem rgba(44, 90, 160, 0.25);
+    }
+  }
+
+  .form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+    
+    i {
+      color: var(--primary-color);
+    }
+  }
+
+  .btn {
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      transform: translateY(-1px);
+    }
+  }
+
+  .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    
+    &:hover {
+      background-color: #1e3d6f;
+      border-color: #1e3d6f;
+      box-shadow: 0 4px 8px rgba(44, 90, 160, 0.3);
+    }
+  }
+
+  .btn-outline-primary {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+    
+    &:hover {
+      background-color: var(--primary-color);
+      border-color: var(--primary-color);
+      color: white;
+    }
+  }
+
+  .btn-outline-secondary {
+    &:hover {
+      background-color: #6c757d;
+      border-color: #6c757d;
+    }
+  }
+
+  .badge {
+    font-size: 0.75rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    
+    &.bg-primary {
+      background-color: var(--primary-color) !important;
+    }
+  }
+
+  .dropdown-menu {
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    
+    .dropdown-item {
+      padding: 0.5rem 1rem;
+      transition: all 0.2s ease;
+      
+      &:hover {
+        background-color: var(--primary-color);
+        color: white;
+      }
+    }
+  }
+
+  .collapse {
+    transition: all 0.3s ease;
+  }
+
+  // Advanced filters styling
+  #advancedFilters {
+    .form-control, .form-select {
+      background-color: #f8f9fa;
+      
+      &:focus {
+        background-color: white;
+      }
+    }
+  }
+
+  // Icon styling
+  .fas {
+    color: var(--primary-color);
+  }
+
+  // Form group spacing
+  .row.g-3 > * {
+    margin-bottom: 1rem;
+  }
+
+  // Responsive design
+  @media (max-width: 768px) {
+    .btn {
+      font-size: 0.875rem;
+      padding: 0.5rem 1rem;
+    }
+    
+    .form-control, .form-select {
+      font-size: 0.875rem;
+    }
+    
+    .d-flex.gap-2 {
+      flex-direction: column;
+      
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  // Animation for filter count badge
+  .badge {
+    animation: fadeInScale 0.3s ease;
+  }
+
+  @keyframes fadeInScale {
+    from {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  // Smooth transitions for advanced filters
+  .collapse {
+    &.show {
+      animation: slideDown 0.3s ease;
+    }
+  }
+
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  // Input focus effects
+  .form-control:focus,
+  .form-select:focus {
+    transform: translateY(-1px);
+  }
+
+  // Card title styling
+  .card-title {
+    color: var(--primary-color);
+    font-weight: 600;
+  }
+}

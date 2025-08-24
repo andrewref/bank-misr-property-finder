@@ -1,7 +1,102 @@
-<div class="container mt-4">
-  <div class="jumbotron bg-light p-5 rounded">
-    <h1 class="display-4">Welcome to PropertyApp</h1>
-    <p class="lead">Find your perfect property with our search and listing platform.</p>
-    <a class="btn btn-primary btn-lg" routerLink="/properties" role="button">Browse Properties</a>
+<!-- Hero Section -->
+<div class="bg-gradient-to-r from-primary-600 to-primary-800 text-white">
+  <div class="max-w-7xl mx-auto px-4 py-20">
+    <div class="text-center">
+      <h1 class="text-5xl font-bold mb-6 animate-fade-in">
+        Find Your Dream Property
+      </h1>
+      <p class="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+        Discover amazing properties with our comprehensive search and listing platform. 
+        Your perfect home is just a click away.
+      </p>
+      <div class="space-x-4">
+        <a class="inline-flex items-center px-8 py-4 bg-white text-primary-600 font-semibold rounded-lg hover:bg-gray-100 transition-colors duration-200 shadow-lg" 
+           routerLink="/properties">
+          <i class="fas fa-building mr-2"></i>
+          Browse Properties
+        </a>
+        <a class="inline-flex items-center px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-primary-600 transition-colors duration-200" 
+           routerLink="/search">
+          <i class="fas fa-search mr-2"></i>
+          Advanced Search
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Features Section -->
+<div class="py-16 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Property Finder?</h2>
+      <p class="text-xl text-gray-600">Everything you need to find your perfect property</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Feature 1 -->
+      <div class="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-search text-2xl text-primary-600"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Advanced Search</h3>
+        <p class="text-gray-600">Use our powerful filters to find exactly what you're looking for</p>
+      </div>
+      
+      <!-- Feature 2 -->
+      <div class="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-map-marker-alt text-2xl text-primary-600"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Prime Locations</h3>
+        <p class="text-gray-600">Properties in the best neighborhoods and locations</p>
+      </div>
+      
+      <!-- Feature 3 -->
+      <div class="text-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+        <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+          <i class="fas fa-users text-2xl text-primary-600"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-3">Expert Agents</h3>
+        <p class="text-gray-600">Professional agents ready to help you every step of the way</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Quick Stats Section -->
+<div class="py-16 bg-primary-600 text-white">
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center">
+      <div>
+        <div class="text-4xl font-bold mb-2">500+</div>
+        <div class="text-primary-200">Properties Listed</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold mb-2">50+</div>
+        <div class="text-primary-200">Expert Agents</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold mb-2">1000+</div>
+        <div class="text-primary-200">Happy Clients</div>
+      </div>
+      <div>
+        <div class="text-4xl font-bold mb-2">10+</div>
+        <div class="text-primary-200">Years Experience</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA Section -->
+<div class="py-16 bg-white">
+  <div class="max-w-4xl mx-auto text-center px-4">
+    <h2 class="text-3xl font-bold text-gray-900 mb-4">Ready to Find Your Dream Property?</h2>
+    <p class="text-xl text-gray-600 mb-8">Start browsing our extensive collection of properties today</p>
+    <a class="inline-flex items-center px-8 py-4 bg-primary-600 text-white font-semibold rounded-lg hover:bg-primary-700 transition-colors duration-200 shadow-lg" 
+       routerLink="/properties">
+      <i class="fas fa-arrow-right mr-2"></i>
+      Get Started Now
+    </a>
   </div>
 </div>

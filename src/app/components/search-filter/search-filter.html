@@ -1,1 +1,256 @@
-<p>search-filter works!</p>
+<div class="search-filter-container">
+  <div class="bg-white rounded-lg shadow-md border-0">
+    <div class="p-6">
+      <!-- Filter Header -->
+      <div class="flex justify-between items-center mb-6">
+        <h5 class="text-lg font-semibold">
+          <i class="fas fa-search mr-2"></i>
+          Search Properties
+        </h5>
+        <div class="flex items-center space-x-2">
+          <span *ngIf="hasActiveFilters()" class="px-2 py-1 bg-primary-600 text-white text-sm rounded">
+            {{ getActiveFilterCount() }} filter{{ getActiveFilterCount() > 1 ? 's' : '' }}
+          </span>
+          <button 
+            *ngIf="hasActiveFilters()" 
+            class="px-3 py-1 text-sm border border-gray-300 rounded hover:bg-gray-50" 
+            (click)="clearFilter()">
+            <i class="fas fa-times mr-1"></i>
+            Clear
+          </button>
+        </div>
+      </div>
+
+      <!-- Basic Filters -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <!-- Location Search -->
+        <div class="lg:col-span-1">
+          <label for="location" class="block text-sm font-medium text-gray-700 mb-1">
+            <i class="fas fa-map-marker-alt mr-1"></i>
+            Location
+          </label>
+          <input 
+            type="text" 
+            id="location"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+            placeholder="Enter city, neighborhood..."
+            [(ngModel)]="filter.location"
+            (ngModelChange)="onFilterChange()">
+        </div>
+
+        <!-- Property Type -->
+        <div>
+          <label for="propertyType" class="block text-sm font-medium text-gray-700 mb-1">
+            <i class="fas fa-home mr-1"></i>
+            Property Type
+          </label>
+          <select 
+            id="propertyType"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+            [(ngModel)]="filter.type"
+            (ngModelChange)="onFilterChange()">
+            <option [ngValue]="undefined">All Types</option>
+            <option *ngFor="let type of propertyTypes" [ngValue]="type">
+              {{ formatPropertyType(type) }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Property Status -->
+        <div>
+          <label for="propertyStatus" class="block text-sm font-medium text-gray-700 mb-1">
+            <i class="fas fa-tag mr-1"></i>
+            Status
+          </label>
+          <select 
+            id="propertyStatus"
+            class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+            [(ngModel)]="filter.status"
+            (ngModelChange)="onFilterChange()">
+            <option [ngValue]="undefined">All Status</option>
+            <option *ngFor="let status of propertyStatuses" [ngValue]="status">
+              {{ formatPropertyStatus(status) }}
+            </option>
+          </select>
+        </div>
+
+        <!-- Price Range -->
+        <div class="md:col-span-2 lg:col-span-1">
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            <i class="fas fa-dollar-sign mr-1"></i>
+            Price Range
+          </label>
+          <div class="grid grid-cols-2 gap-2">
+            <input 
+              type="number" 
+              class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+              placeholder="Min Price"
+              [(ngModel)]="filter.minPrice"
+              (ngModelChange)="onFilterChange()">
+            <input 
+              type="number" 
+              class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+              placeholder="Max Price"
+              [(ngModel)]="filter.maxPrice"
+              (ngModelChange)="onFilterChange()">
+          </div>
+          <div class="mt-2 relative">
+            <select 
+              class="w-full px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+              #priceRangeSelect (change)="priceRangeSelect.value && setPriceRange(priceRanges[+priceRangeSelect.value])">
+              <option value="">Quick Ranges</option>
+              <option *ngFor="let range of priceRanges; let i = index" [value]="i">
+                {{ range.label }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Bedrooms -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            <i class="fas fa-bed mr-1"></i>
+            Bedrooms
+          </label>
+          <div class="grid grid-cols-2 gap-2">
+            <select 
+              class="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+              [(ngModel)]="filter.minBedrooms"
+              (ngModelChange)="onFilterChange()">
+              <option [ngValue]="undefined">Min</option>
+              <option *ngFor="let num of bedroomOptions" [ngValue]="num">
+                {{ num }}+
+              </option>
+            </select>
+            <select 
+              class="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+              [(ngModel)]="filter.maxBedrooms"
+              (ngModelChange)="onFilterChange()">
+              <option [ngValue]="undefined">Max</option>
+              <option *ngFor="let num of bedroomOptions" [ngValue]="num">
+                {{ num }}
+              </option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Bathrooms -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">
+            <i class="fas fa-bath mr-1"></i>
+            Bathrooms
+          </label>
+          <div class="grid grid-cols-2 gap-2">
+            <select 
+              class="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+              [(ngModel)]="filter.minBathrooms"
+              (ngModelChange)="onFilterChange()">
+              <option [ngValue]="undefined">Min</option>
+              <option *ngFor="let num of bathroomOptions" [ngValue]="num">
+                {{ num }}+
+              </option>
+            </select>
+            <select 
+              class="px-3 py-2 text-sm border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+              [(ngModel)]="filter.maxBathrooms"
+              (ngModelChange)="onFilterChange()">
+              <option [ngValue]="undefined">Max</option>
+              <option *ngFor="let num of bathroomOptions" [ngValue]="num">
+                {{ num }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <!-- Advanced Filters Toggle -->
+      <div class="text-center mt-6">
+        <button 
+          class="px-4 py-2 text-sm border border-primary-600 text-primary-600 rounded hover:bg-primary-50 transition-colors duration-200" 
+          (click)="toggleAdvanced()"
+          type="button">
+          <i class="fas" [class.fa-chevron-down]="!isAdvancedOpen" [class.fa-chevron-up]="isAdvancedOpen"></i>
+          {{ isAdvancedOpen ? 'Hide' : 'Show' }} Advanced Filters
+        </button>
+      </div>
+
+      <!-- Advanced Filters -->
+      <div class="overflow-hidden transition-all duration-300" [class.max-h-0]="!isAdvancedOpen" [class.max-h-96]="isAdvancedOpen">
+        <div class="pt-6 border-t border-gray-200 mt-6" *ngIf="isAdvancedOpen">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Area Range -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">
+                <i class="fas fa-ruler-combined mr-1"></i>
+                Area (sq ft)
+              </label>
+              <div class="grid grid-cols-2 gap-2">
+                <input 
+                  type="number" 
+                  class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                  placeholder="Min Area"
+                  [(ngModel)]="filter.minArea"
+                  (ngModelChange)="onFilterChange()">
+                <input 
+                  type="number" 
+                  class="px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                  placeholder="Max Area"
+                  [(ngModel)]="filter.maxArea"
+                  (ngModelChange)="onFilterChange()">
+              </div>
+            </div>
+
+            <!-- Furnished -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">
+                <i class="fas fa-couch mr-1"></i>
+                Furnished
+              </label>
+              <select 
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                [(ngModel)]="filter.furnished"
+                (ngModelChange)="onFilterChange()">
+                <option [ngValue]="undefined">Any</option>
+                <option [ngValue]="true">Furnished</option>
+                <option [ngValue]="false">Unfurnished</option>
+              </select>
+            </div>
+
+            <!-- Parking -->
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">
+                <i class="fas fa-car mr-1"></i>
+                Parking
+              </label>
+              <select 
+                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent" 
+                [(ngModel)]="filter.parking"
+                (ngModelChange)="onFilterChange()">
+                <option [ngValue]="undefined">Any</option>
+                <option [ngValue]="true">Required</option>
+                <option [ngValue]="false">Not Required</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="flex justify-end space-x-2 mt-6">
+            <button 
+              *ngIf="hasActiveFilters()" 
+              class="px-4 py-2 border border-gray-300 text-gray-700 rounded hover:bg-gray-50 transition-colors duration-200" 
+              (click)="clearFilter()">
+              <i class="fas fa-eraser mr-2"></i>
+              Clear All Filters
+            </button>
+            <button 
+              class="px-4 py-2 bg-primary-500 text-white rounded hover:bg-primary-600 transition-colors duration-200" 
+              (click)="onFilterChange()">
+              <i class="fas fa-search mr-2"></i>
+              Apply Filters
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

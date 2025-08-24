@@ -1,12 +1,13 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { PropertyListComponent } from './components/property-list/property-list.component';
+import { PropertyListComponent } from './components/property-list/property-list';
+import { PropertyDetailsComponent } from './components/property-details/property-details';
 import { SearchComponent } from './components/search/search.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+import { NotFoundComponent } from './components/not-found/not-found';
 
 export const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', redirectTo: '/properties', pathMatch: 'full' },
   { path: 'properties', component: PropertyListComponent },
+  { path: 'property/:id', component: PropertyDetailsComponent },
   { path: 'search', component: SearchComponent },
   { path: '**', component: NotFoundComponent }
 ];
