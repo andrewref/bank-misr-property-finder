@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-property-list',
   imports: [],
   templateUrl: './property-list.html',
-  styleUrl: './property-list.scss'
+  styleUrl: './property-list.css'
 })
 export class PropertyList {
 
