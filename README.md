@@ -1,130 +1,110 @@
-# Property Finder Application
+Property Finder Application
+📋 General Description of the Task
+1-1 Objectives
 
-## 📋 Overview
+Build a full frontend for a Property Finder Application using Angular.
 
-A full frontend Property Finder Application built with Angular that implements component-based architecture, UI routing, and navigation with responsive design using Tailwind CSS.
+Implement component-based architecture, UI routing, and navigation.
 
-## 🛠️ Tech Stack
+Ensure responsive design using a modern UI library (Tailwind CSS chosen).
 
-- **Angular**: 20.1.0+
-- **TypeScript**: ~5.8.2
-- **Tailwind CSS**: 3.4.17 (chosen UI library)
-- **RxJS**: ~7.8.0
-- **Font Awesome**: 6.4.0
-- **npm**: Package Manager
+1-2 Tools to be Used
 
-## ✨ Features
+Framework: Angular 20+
 
-### Core Components
-- **NavbarComponent**: Navigation bar with routing
-- **FooterComponent**: Site footer
-- **PropertyListComponent**: Display property listings
-- **PropertyDetailsComponent**: Individual property details
-- **SearchFilterComponent**: Advanced search and filtering
-- **NotFoundComponent**: 404 error handling
+Routing: Angular Router
 
-### Routing & Navigation
-- `/properties` → Property List
-- `/property/:id` → Property Details
-- `/search` → Filtered Results
-- `**` → NotFoundComponent
+UI Library: Tailwind CSS
 
-### Search & Filter Functionality
-- Location search
-- Price range filtering (min/max)
-- Property type filtering
-- @Input/@Output communication between components
+Package Manager: npm
 
-### Data Management
-- Mock property dataset using Angular services
-- Service layer for data operations
-- Component data binding through PropertyService
+Others: TypeScript, Git
 
-## 🚀 Getting Started
+✅ Requirements
+🔹 2-1 Project Initialization & Environment Setup
 
-### Prerequisites
-- Node.js (v18.0.0 or higher)
-- npm (v9.0.0 or higher)
-- Angular CLI (v20.1.5 or higher)
+Create a new Angular project using ng new property-finder.
 
-### Installation
+Add Angular routing.
 
-1. **Clone and navigate to project**
-   ```bash
-   cd bank-misr-property-finder
-   ```
+Install Tailwind CSS as the UI library.
 
-2. **Install dependencies**
-   ```bash
-   npm install
-   ```
+Deliverable: Angular project initialized with routing and Tailwind integrated.
 
-3. **Start development server**
-   ```bash
-   ng serve
-   ```
+🔹 2-2 Create Core UI Components
 
-4. **Open browser**
-   Navigate to `http://localhost:4200`
+Components created:
 
-### Build for Production
-```bash
-ng build
-```
+NavbarComponent (Navigation bar)
 
-## 📁 Project Structure
+FooterComponent
 
-```
-src/
-├── app/
-│   ├── components/
-│   │   ├── navbar/                 # Navigation component
-│   │   ├── footer/                 # Footer component
-│   │   ├── property-list/          # Property listings
-│   │   ├── property-details/       # Property details page
-│   │   ├── search/                 # Search page
-│   │   ├── search-filter/          # Filter component
-│   │   └── not-found/              # 404 error page
-│   ├── app.routes.ts               # Routing configuration
-│   └── app.component.*             # Root component
-├── models/
-│   └── property.ts                 # Property interfaces
-├── services/
-│   └── property.service.ts         # Property data service
-└── styles.css                      # Global styles
-```
+PropertyListComponent
 
-## 🎯 Usage
+PropertyDetailsComponent
 
-1. **Property Listings**: Navigate to `/properties` to browse all properties
-2. **Property Details**: Click any property to view detailed information
-3. **Search & Filter**: Use `/search` for advanced filtering by location, price, and type
-4. **Responsive Design**: Works on desktop, tablet, and mobile devices
+SearchFilterComponent
 
-## 🔧 Development Commands
+NotFoundComponent
 
-```bash
-# Development server
+Deliverable: Functional and styled responsive components.
+
+🔹 2-3 Implement Routing & Navigation
+
+Defined routes:
+
+/properties → Property List
+
+/property/:id → Property Details
+
+/search → Filtered Results
+
+** → NotFoundComponent
+
+Navigation handled via NavbarComponent.
+
+Deliverable: Fully working router with navigation.
+
+🔹 2-4 Connect Components with Mock Data
+
+Mock dataset created using Angular services.
+
+Data bound to PropertyListComponent and PropertyDetailsComponent.
+
+Deliverable: Components dynamically load data via services.
+
+🔹 2-5 Add Search & Filter Functionality
+
+SearchFilterComponent allows filtering by:
+
+Location
+
+Price (min & max)
+
+Property type
+
+Communication implemented using @Input and @Output.
+
+Deliverable: Fully functional search and filter system.
+
+📦 Final Deliverables
+
+✅ Angular project with component-based structure
+
+✅ Routing and navigation implemented
+
+✅ Responsive UI with Tailwind CSS
+
+✅ Mock data integration using services
+
+✅ Search and filter functionality
+
+✅ README with setup and usage instructions
+
+🚀 Setup & Usage
+
+# Install dependencies
+npm install
+
+# Start development server
 ng serve
-
-# Build for production
-ng build
-
-# Run tests
-ng test
-
-# Generate component
-ng generate component component-name
-```
-
-## 📦 Requirements Fulfilled
-
-✅ **2-1**: Project Initialization & Environment Setup  
-✅ **2-2**: Core UI Components Created  
-✅ **2-3**: Routing & Navigation Implemented  
-✅ **2-4**: Mock Data Integration Using Services  
-✅ **2-5**: Search & Filter Functionality with @Input/@Output  
-
----
-
-**Built with Angular 20+ | Styled with Tailwind CSS | Developed for Bank Misr**
